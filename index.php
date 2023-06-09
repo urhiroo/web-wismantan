@@ -1,8 +1,3 @@
-<?php
-include "koneksi.php";
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -66,21 +61,21 @@ include "koneksi.php";
             <h2>Signup</h2>
 
             <div class="input_box">
-              <input type="text" placeholder="Enter your username" required />
+              <input type="text" name="username" placeholder="Enter your username" required />
               <i class="uil uil-envelope-alt email"></i>
             </div>
             <div class="input_box">
-              <input type="password" placeholder="Create password" required />
+              <input type="password"  name="pw" placeholder="Create password" required />
               <i class="uil uil-lock password"></i>
               <i class="uil uil-eye-slash pw_hide"></i>
             </div>
             <div class="input_box">
-              <input type="password" placeholder="Confirm password" required />
+              <input type="password" name="pw" placeholder="Confirm password" required />
               <i class="uil uil-lock password"></i>
               <i class="uil uil-eye-slash pw_hide"></i>
             </div>
 
-            <button class="button">Signup Now</button>
+            <button type="submit" name="submit" class="button">Signup Now</button>
 
             <div class="login_signup">Already have an account? <a href="#" id="login">Login</a></div>
           </form>
@@ -89,6 +84,8 @@ include "koneksi.php";
 
     <div class="title">
         <h1>WIS-MANTAN</h1>
+        <p>Solusi untuk menemukan tempat liburan khusus di daerah kalimantan</p>  
+        <img src="Group 2.png" alt="Gambar">
     </div>
 
 
@@ -108,14 +105,14 @@ if (isset($_POST['button'])) {
     $return = mysqli_fetch_array($result);
 
     if ($return) {
-        $_SESSION['id_pengguna'] = $_POST['id_pengguna'];
+        $_SESSION['id'] = $_POST['id'];
         $_SESSION['username'] = $_POST['username'];
         $_SESSION['pw'] = $_POST['pw'];
 
         echo "<script>alert('Selamat datang $username');
                 document.location.href = 'index.php'</script>";
     } else {
-        echo "<script>alert('Username tidak teradaftar');
+        echo "<script>alert('Username atau password salah!');
             document.location.href = 'index.php'</script>";
     }
 
